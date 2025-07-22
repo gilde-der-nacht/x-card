@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <title>X Karte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url(https://fonts.bunny.net/css?family=dm-sans:400,400i,700,700i|krona-one:400);
+
+    :root {
+      --size: 150mm;
+      --width: var(--size);
+      --height: var(--size);
+    }
+
+    h1 {
+      font-family: "Krona One";
+    }
+
+    body {
+      font-family: "DM Sans";
+    }
+
+    @page {
+      size: var(--width) var(--height);
+      margin: 25%;
+    }
+
+    .page {
+      block-size: var(--height);
+      inline-size: var(--width);
+      outline: 1px solid red;
+      display: grid;
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+      grid-template-rows: repeat(24, minmax(0, 1fr));
+      overflow: hidden;
+    }
+
+    @media print {
+      .page {
+        outline: 1px dotted gray;
+      }
+    }
+
+    .x {
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      align-self: center;
+      justify-self: center;
+      font-size: 120mm;
+      color: hsl(272 50% 45.8%);
+    }
+
+    .text {
+      grid-column: 3 / -3;
+      grid-row: 3 / -5;
+      align-self: center;
+      text-wrap-style: balanced;
+      font-size: 5mm;
+    }
+
+    .logo {
+      grid-column: 2 / -2;
+      grid-row: 2 / -2;
+      text-align: end;
+      display: grid;
+      gap: 5mm;
+      grid-template:
+        ". ." 1fr
+        "name logo" max-content
+        / 1fr max-content;
+      opacity: 0.6;
+
+      h1 {
+        grid-area: name;
+        font-size: 5mm;
+        margin: 0;
+        align-self: center;
+        text-transform: uppercase;
+      }
+
+      img {
+        grid-area: logo;
+        --size: 15mm;
+        block-size: var(--size);
+        inline-size: var(--size);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+  <h1 class="x">X</h1>
+</div>
+
+<div class="page">
+  <p class="text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae magna eu elit mollis dictum vitae vel nulla. Fusce et vestibulum mauris. Nulla in lacus eget tortor varius ultrices. Duis risus tellus, bibendum a viverra eu, mollis a urna. Cras fermentum libero eu dictum iaculis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc volutpat justo in erat facilisis lacinia id nec velit. 
+  </p>
+  <div class="logo">
+    <h1>Luzerner<br>Rollenspieltage</h1>
+    <img src="./links/rst-logo.svg">
+  </div>
+</div>
+
+</body>
+
+</html>
